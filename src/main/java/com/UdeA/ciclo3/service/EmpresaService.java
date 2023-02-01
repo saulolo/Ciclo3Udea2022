@@ -31,11 +31,11 @@ public class EmpresaService {
 
     //MÉTODO PARA EDITAR UNA EMPRESA
     public Empresa getEmpresaById(Integer id){  //33. Creamos un método que me traiga el Id de la empresa, porque con este puedo hacer lo que necesite.
-        return empresaRepository.findById(id).get(); //34. con findById i get me traigo el id de la empresa.(si no le pongo el get, me trae es el espacio en memoria)
+        return empresaRepository.findById(id).get(); //34. con findById(id).get() me traigo el id de la empresa.(si no le pongo el get, me trae es el espacio en memoria)
     }
 
     //MÉTODO PARA GUARDAR O ACTUALIZAR OBJETOS DE TIPO EMPRESA (guardar y actualizar viene siendo el mismo método)
-    public boolean saveOrUpdateEmpresa(Empresa empresa){  //35. Método boleano porque me va a traer un false o un true
+    public boolean saveOrUpdateEmpresa(Empresa empresa){  //35. Método booleano porque me va a traer un false o un true (Trayendo el objeto Empresa)
         Empresa emp = empresaRepository.save(empresa);    //36. Creo un objeto temporal para verificar si la tarea se hizo o no.
         if(empresaRepository.findById(emp.getId())!=null) {//37. Utilizo el método save que es el que me va a guardar o actualizar la entidad.
             return true;     //38. Verifico con un condicional para saber si el objeto existe o no , y si si, que lo actualice.
@@ -43,11 +43,13 @@ public class EmpresaService {
         return false;
     }
 
-    //Falta método delete
-
-
-
-
-
+    //MÉTODO PARA ELIMINAR EMPRESAS (Elimina empresas registradas teniendo el id)
+    public boolean deleteEmpresas(Integer id){  //39. Método booleano porque me va a traer un false o un true (Trayendo el objeto Id)
+        empresaRepository.deleteById(id);  //40. Utilizo el método deleteById porque va a eliminar por ID, y es el que me va a eliminar entidad.
+        if(getEmpresaById(id)!=null) {  //41. Verifico con un condicional para saber si el objeto se eliminó o no llamando el método que ya habíamos creado
+            return false;
+        }
+        return true;
+    }
 
 }
