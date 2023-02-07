@@ -46,12 +46,23 @@ public class ControllerFull {
     }
 
     //SERVICIO EDITAR EMPRESA
-    @GetMapping({"/EditarEmpresa"})
+    @GetMapping("/EditarEmpresa/{id}")
     public String editarEmpresa(Model model, @PathVariable Integer id) {
         Empresa emp = empresaService.getEmpresaById(id);
         model.addAttribute("emp", emp);
         return "editarEmpresa";
     }
+
+    //SERVICIO ACTUALIZAR EMPRESA
+    @PostMapping("/ActualizarEmpresa")
+    public String updateEmpresa(Empresa emp){
+        if(empresaService.saveOrUpdateEmpresa(emp)==true){
+            return "redirect:/VerEmpresas";
+        }
+        return "redirect:/EditarEmpresa";
+    }
+
+
 
 
 
