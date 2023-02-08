@@ -62,6 +62,20 @@ public class ControllerFull {
         return "redirect:/EditarEmpresa";
     }
 
+    //SERVICIO ELIMINAR EMPRESA
+    @GetMapping("/EliminarEmpresa/{id}")
+    public String eliminarEmpresa(@PathVariable Integer id){
+        if(empresaService.deleteEmpresa(id)){
+            return "redirect:/VerEmpresas";
+        }
+        return "redirect:/VerEmpresas";
+    }
+
+
+
+
+
+
 
 
 
