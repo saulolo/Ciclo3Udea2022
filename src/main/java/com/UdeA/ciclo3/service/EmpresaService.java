@@ -10,8 +10,8 @@ import java.util.List;
 //Le decimos a Spring que esta clase es de servicios
 @Service
 public class EmpresaService {
-    @Autowired
-    EmpresaRepository empresaRepository;
+    @Autowired  //Conectamos esta clase con el repository de Empresa
+    EmpresaRepository empresaRepository; //Creamos un objeto tipo EmpresaRepository para poder usar los metodos que dicha clase hereda
 
     //MÉTODO PARA VER LAS EMPRESAS
     //Método que retornará la lista de empresas usando métodos heredados del jpaRepository
@@ -40,7 +40,6 @@ public class EmpresaService {
     //Método para eliminar empresas registradas teniendo el id
     public boolean deleteEmpresa(Integer id){
         empresaRepository.deleteById(id);  //Eliminar
-
         if (empresaRepository.findById(id)!=null){  //Verificación del servicio eliminación
             return true;
         }
