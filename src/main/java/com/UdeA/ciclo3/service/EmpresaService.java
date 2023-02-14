@@ -21,7 +21,7 @@ public class EmpresaService {
         return empresaList;
     }
 
-    //Metodo que me trae un objeto de tipo Empresa
+    //MÉTODO QUE ME TRAE UN OBJETO TIPO EMPRESA POR ID
     public Empresa getEmpresaById(Integer id){
         return empresaRepository.findById(id).get();
     }
